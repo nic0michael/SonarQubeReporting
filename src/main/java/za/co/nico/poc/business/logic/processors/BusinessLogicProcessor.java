@@ -26,8 +26,8 @@ public class BusinessLogicProcessor {
 	public GetProjectsResponse getProjectsList() {		
 		String rawJson=null;
 		String restUrl="http://localhost:9001/api/components/search_projects";
-		String platformUrl="http://localhost:9001";
-		String sonarEndPoint="/api/components/search_projects";
+		String platformUrl="http://localhost:9001/";
+		String sonarEndPoint="api/components/search_projects";
 		
 		try {
 //			rawJson=service.connectToRest(restUrl);
