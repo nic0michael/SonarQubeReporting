@@ -42,4 +42,12 @@ public class BusinessLogicProcessor {
 		return null;
 	}
 
+	public String persistProjectData(String fileText) {
+		return "SUCCESS";
+	}
+
+	public String persistProjectIssueData(String string) {
+		return "SUCCESS";
+	}
+
 }

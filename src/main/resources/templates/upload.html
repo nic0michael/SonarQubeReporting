@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>File upload </h1>
+
+<form method="POST" action="/projects" enctype="multipart/form-data">
+ <table>
+        <tr>
+            <td>&nbsp;</td><td><form:label path="file"><b>Select a Projects file to upload : </b></form:label></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td><td><input type="file" name="file" /><br/><br/></td>
+        </tr>
+        <tr>
+           <td>&nbsp;</td><td><input type="submit" value="Submit" /></td>
+        </tr>        
+ </table>
+</form>
+
+<br/><br/><br/><br/>
+
+<form method="POST" action="/issues" enctype="multipart/form-data">
+ <table>
+        <tr>
+            <td>&nbsp;</td><td><form:label path="file"><b>Select a Issue file to upload : </b></form:label></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td><td><input type="file" name="file" /><br/><br/></td>
+        </tr>
+        <tr>
+           <td>&nbsp;</td><td><input type="submit" value="Submit" /></td>
+        </tr>         
+ </table>
+</form>
+
+</body>
+</html>
