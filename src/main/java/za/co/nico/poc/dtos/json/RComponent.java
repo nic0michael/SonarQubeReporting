@@ -2,7 +2,7 @@ package za.co.nico.poc.dtos.json;
 
 import java.util.List;
 
-public class Component {
+public class RComponent {
     String organization;
     String id;
     String  key;
@@ -47,7 +47,7 @@ public class Component {
         return isFavorite;
     }
 
-    public void setFavorite(boolean favorite) {
+    public void setIsFavorite(boolean favorite) {
         isFavorite = favorite;
     }
 
@@ -74,7 +74,7 @@ public class Component {
                 ", id='" + id + '\'' +
                 ", key='" + key + '\'' +
                 ", name='" + name + '\'' +
-                ", isFavorite=" + isFavorite +
+//                ", isFavorite=" + isFavorite +
                 ", tags=" + tags +
                 ", visibility='" + visibility + '\'' +
                 '}';

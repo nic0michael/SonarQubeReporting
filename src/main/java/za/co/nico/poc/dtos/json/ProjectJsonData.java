@@ -2,24 +2,28 @@ package za.co.nico.poc.dtos.json;
 
 import java.util.List;
 
+
 public class ProjectJsonData {
 
-    Paging paging;
-    List<Component>components;
+    RPaging paging;
+    List<RComponent>components;
+    
+    
+    List<Facet> facets;
 
-    public Paging getPaging() {
+    public RPaging getPaging() {
         return paging;
     }
 
-    public void setPaging(Paging paging) {
+    public void setPaging(RPaging paging) {
         this.paging = paging;
     }
 
-    public List<Component> getComponents() {
+    public List<RComponent> getComponents() {
         return components;
     }
 
-    public void setComponents(List<Component> components) {
+    public void setComponents(List<RComponent> components) {
         this.components = components;
     }
 

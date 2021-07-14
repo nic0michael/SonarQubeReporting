@@ -23,6 +23,7 @@ public class UploadController {
 	
 	private final String PERSIST_PROJECT_DATA="PERSIST_PROJECT_DATA";
 	private final String PERSIST_PROJECT_ISSUE_DATA="PERSIST_PROJECT_ISSUE_DATA";
+
 	
 	@Autowired
 	BusinessLogicProcessor processor;
@@ -46,7 +47,7 @@ public class UploadController {
         try {
             byte[] bytes = file.getBytes();
             String fileText=new String(bytes);
-            String result=processUploadData(fileText, PERSIST_PROJECT_DATA);
+            String result=processor.processUploadData(fileText, PERSIST_PROJECT_DATA);
             
             if("SUCCESS".equalsIgnoreCase(result)) {
             	redirectAttributes.addFlashAttribute("message","You successfully uploaded file with content : \n" + fileText);
@@ -73,7 +74,7 @@ public class UploadController {
         try {
             byte[] bytes = file.getBytes();
             String fileText=new String(bytes);
-            String result=processUploadData(fileText, PERSIST_PROJECT_ISSUE_DATA);
+            String result=processor.processUploadData(fileText, PERSIST_PROJECT_ISSUE_DATA);
             
             if("SUCCESS".equalsIgnoreCase(result)) {
             	redirectAttributes.addFlashAttribute("message","You successfully uploaded file with content : " + fileText);
@@ -93,26 +94,5 @@ public class UploadController {
         return "uploadStatus";
     }
     
-    private String processUploadData(String fileText,String action) {
-
-        log.info("fileText : "+fileText);
-        
-    	if(PERSIST_PROJECT_DATA.equalsIgnoreCase(action)){
-    		return persistProjectData(fileText);
-    	}else if(PERSIST_PROJECT_ISSUE_DATA.equalsIgnoreCase(action)){
-    		return persistProjectIsssueData(fileText);
-    	} else {
-    		return "invalid action : "+action;
-    	}
-    	
-    }
-    
-    private String persistProjectData(String fileText) {
-    	return processor.persistProjectData(fileText);
-    }
-    
-    private String persistProjectIsssueData(String fileText) {
-    	return processor.persistProjectIssueData(fileText);
-    }
 
 }

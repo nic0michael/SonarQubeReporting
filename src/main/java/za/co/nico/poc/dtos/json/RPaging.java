@@ -1,6 +1,6 @@
 package za.co.nico.poc.dtos.json;
 
-public class Paging {
+public class RPaging {
 
       int pageIndex;
       int pageSize;

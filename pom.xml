@@ -114,7 +114,7 @@
 			<version>1.11</version>
 		</dependency>
 
-		<!-- BDD -- https://mvnrepository.com/artifact/org.jbehave/jbehave-core -->
+		<!-- BDD //  https://mvnrepository.com/artifact/org.jbehave/jbehave-core -->
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
