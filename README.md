@@ -264,3 +264,7 @@
 
 ## Tools used :
 [https://jsonformatter.curiousconcept.com/#](https://jsonformatter.curiousconcept.com/#)
+
+https://mariadb.com/kb/en/installing-mariadb-msi-packages-on-windows/
+https://www.youtube.com/watch?v=s39ENZ9mLmA
+
