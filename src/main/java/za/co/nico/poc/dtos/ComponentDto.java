@@ -9,6 +9,7 @@ public class ComponentDto {
     String name;
     boolean isFavorite;
     String visibility;
+    
 	public String getOrganization() {
 		return organization;
 	}

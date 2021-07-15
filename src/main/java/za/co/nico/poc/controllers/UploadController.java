@@ -46,6 +46,7 @@ public class UploadController {
 
         try {
             byte[] bytes = file.getBytes();
+            log.info("Projects file uploaded size : "+bytes.length);
             String fileText=new String(bytes);
             String result=processor.processUploadData(fileText, PERSIST_PROJECT_DATA);
             
@@ -73,6 +74,7 @@ public class UploadController {
 
         try {
             byte[] bytes = file.getBytes();
+            log.info("Issues file uploaded size : "+bytes.length);
             String fileText=new String(bytes);
             String result=processor.processUploadData(fileText, PERSIST_PROJECT_ISSUE_DATA);
             
