@@ -95,6 +95,8 @@ public class ProjectIssueEntity implements Serializable {
 
 		if (issueDto != null) {
 
+			this.dateCreated = new Timestamp(System.currentTimeMillis());
+			
 			this.setKey(issueDto.getKey());
 			this.setRule(issueDto.getRule());
 			this.setSeverity(issueDto.getSeverity());
@@ -117,6 +119,45 @@ public class ProjectIssueEntity implements Serializable {
 			this.setUpdateDate(issueDto.getUpdateDate());
 			this.setType(issueDto.getType());
 			this.setOrganization(issueDto.getOrganization());
+		} else {
+			log.error("Constructing this class with issueDto as a null");
+		}
+	}
+
+
+	public void setProjectIssueEntity(ProjectIssueEntity projectIssueEntity) {
+
+		if (projectIssueEntity != null) {
+
+
+			if(projectIssueEntity.getDateCreated()!=null) {
+				this.dateCreated = projectIssueEntity.getDateCreated();
+			} else {
+				this.dateCreated = new Timestamp(System.currentTimeMillis());
+			}
+			
+			this.setKey(projectIssueEntity.getKey());
+			this.setRule(projectIssueEntity.getRule());
+			this.setSeverity(projectIssueEntity.getSeverity());
+			this.setComponent(projectIssueEntity.getComponent());
+			this.setProject(projectIssueEntity.getProject());
+			this.setLine(projectIssueEntity.getLine());
+			this.setHash(projectIssueEntity.getHash());
+
+			this.setStartLine(projectIssueEntity.getStartLine());
+			this.setEndLine(projectIssueEntity.getEndLine());
+			this.setStartOffset(projectIssueEntity.getStartOffset());
+			this.setEndOffset(projectIssueEntity.getEndOffset());
+
+			this.setStatus(projectIssueEntity.getStatus());
+			this.setMessage(projectIssueEntity.getMessage());
+			this.setEffort(projectIssueEntity.getEffort());
+			this.setDebt(projectIssueEntity.getDebt());
+			this.setAuthor(projectIssueEntity.getAuthor());
+			this.setCreationDate(projectIssueEntity.getCreationDate());
+			this.setUpdateDate(projectIssueEntity.getUpdateDate());
+			this.setType(projectIssueEntity.getType());
+			this.setOrganization(projectIssueEntity.getOrganization());
 		} else {
 			log.error("Constructing this class with issueDto as a null");
 		}

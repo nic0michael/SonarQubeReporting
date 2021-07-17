@@ -1,273 +1,59 @@
 # SonarQubeReporting
 
-## Search for projects in SonarQube
-[http://localhost:9001/api/components/search_projects](http://localhost:9001/api/components/search_projects)
+This project was written to be able to extract data from a SonarQube Server into a MySQL database  
+providing our own additional fields for reporting purposes.   
+
+In this project we provide links to manually download the :   
+
+  * SonarQube Projects List
+  * SonarQube Issues for a project  
+
+The project  [RabbitMQProducerMicroservice ](https://github.com/nic0michael/RabbitMQProducerMicroservice/blob/master/SonarQubeInstallationAndTesting.md)  was built using Industry Best Practices.  
+This project is used to provide a test report for that project
 
 
-```
-{
-   "paging":{
-      "pageIndex":1,
-      "pageSize":100,
-      "total":2
-   },
-   "components":[
-      {
-         "key":"com.mycompany:NicosBadProject",
-         "name":"NicosBadProject",
-         "qualifier":"TRK",
-         "isFavorite":false,
-         "tags":[
-            
-         ],
-         "visibility":"public",
-         "needIssueSync":false
-      },
-      {
-         "key":"za.co.nico:RabbitMqPoc",
-         "name":"RabbitMqPoc",
-         "qualifier":"TRK",
-         "isFavorite":false,
-         "tags":[
-            
-         ],
-         "visibility":"public",
-         "needIssueSync":false
-      }
-   ],
-   "facets":[
-      
-   ]
-}
-```
+## SonarQube Installation both Server and Docker installations
+For installation procedures please refer to our document :   
+[SonarQubeInstallationAndTesting in our RabbitMQProducerMicroservice project](https://github.com/nic0michael/RabbitMQProducerMicroservice/blob/master/SonarQubeInstallationAndTesting.md)
 
-## Search for issues in all projects
+## What we are testing here
+In this project we are testing our [RabbitMQProducerMicroservice project](https://github.com/nic0michael/RabbitMQProducerMicroservice).   
+Running in a docker container with SonarQube also running in a Docker Container.   
+We are using Portainer to manage and launch our Docker containers.     
+Information on how to install [Portainer is available here](https://github.com/nic0michael/RabbitMQProducerMicroservice/blob/master/Portainer.md).   
+You should be able to edit the page SonarQubeReporting/src/main/resources/templates/upload.html   
+and add your own links to your project
 
-[http://localhost:9001/api/issues/search](http://localhost:9001/api/issues/search)
+## Manual Upload is working
+The  Manual Upload is working.     
 
-```
-{
-   "total":51,
-   "p":1,
-   "ps":100,
-   "paging":{
-      "pageIndex":1,
-      "pageSize":100,
-      "total":51
-   },
-   "effortTotal":402,
-   "issues":[
-      {
-         "key":"AXlMYApOgcweGMi3pvpV",
-         "rule":"xml:S125",
-         "severity":"MAJOR",
-         "component":"za.co.nico:RabbitMqPoc:pom.xml",
-         "project":"za.co.nico:RabbitMqPoc",
-         "line":44,
-         "hash":"c11bb7eec8b60626961f63cda07648ac",
-         "textRange":{
-            "startLine":44,
-            "endLine":51,
-            "startOffset":0,
-            "endOffset":8
-         },
-         "flows":[
-            
-         ],
-         "status":"OPEN",
-         "message":"Remove this commented out code.",
-         "effort":"5min",
-         "debt":"5min",
-         "author":"",
-         "tags":[
-            "unused"
-         ],
-         "creationDate":"2021-05-08T14:27:02+0000",
-         "updateDate":"2021-05-08T14:27:02+0000",
-         "type":"CODE_SMELL",
-         "scope":"MAIN"
-      }
-   ],
-   "facets":[
-      
-   ]
-}
-```
+We were not able to figure out  how to create a WsClient or a Client to call the SonarQube API .   
 
-## Search for issues in project : za.co.nico:RabbitMqPoc
+**Using credentials :**   
+	private final String TOKEN="2ce06b3585c34141beeeb4005235337ba2bd135d";   
+	private final String USERNAME="admin";   
+	private final String PASSWORD="admin";   
+This is in class :  SonarQubeReporting/src/main/java/za/co/nico/poc/services/SonarServiceImpl.java
 
+If you know how to do that please send us an email to :  nicomichael2018 AT yahoo DOT COM.
 
-[http://localhost:9001/api/issues/search?componentKeys=za.co.nico:RabbitMqPoc](http://localhost:9001/api/issues/search?componentKeys=za.co.nico:RabbitMqPoc)
+## We have 12 other projects in Github  
+[https://github.com/nic0michael?tab=repositories](https://github.com/nic0michael?tab=repositories)
 
-```
-{
-   "total":37,
-   "p":1,
-   "ps":100,
-   "paging":{
-      "pageIndex":1,
-      "pageSize":100,
-      "total":37
-   },
-   "effortTotal":244,
-   "issues":[
-      {
-         "key":"AXlMYAnmgcweGMi3pvpI",
-         "rule":"java:S1068",
-         "severity":"MAJOR",
-         "component":"za.co.nico:RabbitMqPoc:src/main/java/za/co/nico/rabbitmq/poc/validators/RequestValidator.java",
-         "project":"za.co.nico:RabbitMqPoc",
-         "line":19,
-         "hash":"e42cd11faf8bf5680e255fe15e1e8527",
-         "textRange":{
-            "startLine":19,
-            "endLine":19,
-            "startOffset":30,
-            "endOffset":47
-         },
-         "flows":[
-            
-         ],
-         "status":"OPEN",
-         "message":"Remove this unused ""VALIDATION_PASSED"" private field.",
-         "effort":"5min",
-         "debt":"5min",
-         "author":"nicomichael2012@gmail.com",
-         "tags":[
-            "unused"
-         ],
-         "creationDate":"2021-04-02T18:48:11+0000",
-         "updateDate":"2021-05-08T14:27:02+0000",
-         "type":"CODE_SMELL",
-         "scope":"MAIN"
-      },
-      {
-         "key":"AXlMYAnmgcweGMi3pvpJ",
-         "rule":"java:S1068",
-         "severity":"MAJOR",
-         "component":"za.co.nico:RabbitMqPoc:src/main/java/za/co/nico/rabbitmq/poc/validators/RequestValidator.java",
-         "project":"za.co.nico:RabbitMqPoc",
-         "line":23,
-         "hash":"fea5f208ea0826bb82064ac9696c1959",
-         "textRange":{
-            "startLine":23,
-            "endLine":23,
-            "startOffset":29,
-            "endOffset":56
-         },
-         "flows":[
-            
-         ],
-         "status":"OPEN",
-         "message":"Remove this unused ""failedToSendToQueueResponse"" private field.",
-         "effort":"5min",
-         "debt":"5min",
-         "author":"nicomichael2012@gmail.com",
-         "tags":[
-            "unused"
-         ],
-         "creationDate":"2021-04-02T18:48:11+0000",
-         "updateDate":"2021-05-08T14:27:02+0000",
-         "type":"CODE_SMELL",
-         "scope":"MAIN"
-      },
-      {
-         "key":"AXlMYAmSgcweGMi3pvo8",
-         "rule":"java:S2139",
-         "severity":"MAJOR",
-         "component":"za.co.nico:RabbitMqPoc:src/main/java/za/co/nico/rabbitmq/poc/services/impl/MessageQueueSendServiceImpl.java",
-         "project":"za.co.nico:RabbitMqPoc",
-         "line":76,
-         "hash":"0ddff5c0b9711fe1cb6144ecbfc4e17a",
-         "textRange":{
-            "startLine":76,
-            "endLine":76,
-            "startOffset":11,
-            "endOffset":33
-         },
-         "flows":[
-            {
-               "locations":[
-                  {
-                     "component":"za.co.nico:RabbitMqPoc:src/main/java/za/co/nico/rabbitmq/poc/services/impl/MessageQueueSendServiceImpl.java",
-                     "textRange":{
-                        "startLine":77,
-                        "endLine":77,
-                        "startOffset":3,
-                        "endOffset":122
-                     },
-                     "msg":"Logging statement."
-                  }
-               ]
-            },
-            {
-               "locations":[
-                  {
-                     "component":"za.co.nico:RabbitMqPoc:src/main/java/za/co/nico/rabbitmq/poc/services/impl/MessageQueueSendServiceImpl.java",
-                     "textRange":{
-                        "startLine":78,
-                        "endLine":78,
-                        "startOffset":9,
-                        "endOffset":44
-                     },
-                     "msg":"Thrown exception."
-                  }
-               ]
-            }
-         ],
-         "status":"OPEN",
-         "message":"Either log this exception and handle it, or rethrow it with some contextual information.",
-         "effort":"15min",
-         "debt":"15min",
-         "author":"nicomichael2012@gmail.com",
-         "tags":[
-            "clumsy",
-            "error-handling"
-         ],
-         "creationDate":"2021-05-08T13:03:12+0000",
-         "updateDate":"2021-05-08T14:27:02+0000",
-         "type":"CODE_SMELL",
-         "scope":"MAIN"
-      }
-   ],
-   "components":[
-      {
-         "key":"za.co.nico:RabbitMqPoc:src/main/java/za/co/nico/rabbitmq/poc/enums/ResponseStatusCodes.java",
-         "enabled":true,
-         "qualifier":"FIL",
-         "name":"ResponseStatusCodes.java",
-         "longName":"src/main/java/za/co/nico/rabbitmq/poc/enums/ResponseStatusCodes.java",
-         "path":"src/main/java/za/co/nico/rabbitmq/poc/enums/ResponseStatusCodes.java"
-      },
-      {
-         "key":"za.co.nico:RabbitMqPoc:pom.xml",
-         "enabled":true,
-         "qualifier":"FIL",
-         "name":"pom.xml",
-         "longName":"pom.xml",
-         "path":"pom.xml"
-      },
-      {
-         "key":"za.co.nico:RabbitMqPoc:src/main/java/za/co/nico/rabbitmq/poc/utils/Utils.java",
-         "enabled":true,
-         "qualifier":"FIL",
-         "name":"Utils.java",
-         "longName":"src/main/java/za/co/nico/rabbitmq/poc/utils/Utils.java",
-         "path":"src/main/java/za/co/nico/rabbitmq/poc/utils/Utils.java"
-      }
-   ],
-   "facets":[
-      
-   ]
-}
-```
+## Free Open Source FOS with the License based on GPL Version 3
+This project is Free Open Source code FOS.
+We provide this Project as free of charge and subject to the terms and license of this project is GPL Version 3.
+As this is Free Open Source Project you are welcome to make a fork of this project for commercial use.
+In return for that please give the author of this project credit in your MD keeping the next line:
+The Source of this project if Forked from GitHub and is Free for Commercial use.
+
+## No Warranty is provided or implied
+This software is provided in terms of South African law as : "VOETS TOETS" "AS IS" (in English) with no warranty and no Guarantee provided or implied That the user shall agree to comply with these terms when using this software.
 
 ## Tools used :
-[https://jsonformatter.curiousconcept.com/#](https://jsonformatter.curiousconcept.com/#)
-
-https://mariadb.com/kb/en/installing-mariadb-msi-packages-on-windows/
-
-https://www.youtube.com/watch?v=s39ENZ9mLmA
+[https://jsonformatter.curiousconcept.com/#](https://jsonformatter.curiousconcept.com/#).   
+[https://mariadb.com/kb/en/installing-mariadb-msi-packages-on-windows/](https://mariadb.com/kb/en/installing-mariadb-msi-packages-on-windows/).   
+[https://www.youtube.com/watch?v=s39ENZ9mLmA](https://www.youtube.com/watch?v=s39ENZ9mLmA).   
 
 
 

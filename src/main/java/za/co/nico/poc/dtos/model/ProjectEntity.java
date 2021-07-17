@@ -1,5 +1,6 @@
 package za.co.nico.poc.dtos.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.*;
@@ -13,45 +14,66 @@ import za.co.nico.poc.dtos.ComponentDto;
 @Table(name = "projects")
 public class ProjectEntity {
 	private static final Logger log = LoggerFactory.getLogger(ProjectEntity.class);
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "project_id")
-	private Long  projectId;
-	
+	private Long projectId;
+
 	@Column(name = "date_created")
 	private Timestamp dateCreated;
 
 	@Column(name = "organization")
-    String organization;
-    
+	private String organization;
+
 	@Column(name = "dto_id")
-    String id;
+	private String id;
 
 	@Column(name = "project_key")
 	private String key;
 
 	@Column(name = "name")
-    String name;
-    
+	private String name;
+
 	@Column(name = "is_favorite")
-    Boolean isFavorite;
+	private Boolean isFavorite;
 
 	@Column(name = "visibility")
-    String visibility;
-    
+	private String visibility;
 
-	public ProjectEntity(){}
-	
+	public ProjectEntity() {
+	}
+
 	public ProjectEntity(ComponentDto componentDto) {
-		if(componentDto!=null) {
-		this.organization=componentDto.getOrganization();
-		this.id=componentDto.getId();
-		this.key=componentDto.getKey();
-		this.name=componentDto.getName();
-		this.isFavorite=componentDto.isFavorite();
-		this.visibility=componentDto.getVisibility();
+		if (componentDto != null) {
+
+			this.id = componentDto.getId();			
+			this.dateCreated = new Timestamp(System.currentTimeMillis());
+			this.organization = componentDto.getOrganization();
+			this.key = componentDto.getKey();
+			this.name = componentDto.getName();
+			this.isFavorite = componentDto.isFavorite();
+			this.visibility = componentDto.getVisibility();
+
+		} else {
+			log.error("ComponentDto in null");
+		}
+	}
+
+	public void setProjectEntity(ProjectEntity projectEntity) {
+		if (projectEntity != null) {
+			this.id = projectEntity.getId();
+			if(projectEntity.getDateCreated()!=null) {
+				this.dateCreated = projectEntity.getDateCreated();
+			} else {
+				this.dateCreated = new Timestamp(System.currentTimeMillis());
+			}
+			this.organization = projectEntity.getOrganization();
+			this.key = projectEntity.getKey();
+			this.name = projectEntity.getName();
+			this.isFavorite = projectEntity.getIsFavorite();
+			this.visibility = projectEntity.getVisibility();
+
 		} else {
 			log.error("ComponentDto in null");
 		}
@@ -131,6 +153,5 @@ public class ProjectEntity {
 				+ organization + ", id=" + id + ", key=" + key + ", name=" + name + ", isFavorite=" + isFavorite
 				+ ", visibility=" + visibility + "]";
 	}
-	
-	
+
 }

@@ -166,6 +166,7 @@ public class BusinessLogicProcessor {
 			if (count < 5) {
 				log.info("found " + foundProjectIssueEntity.getKey());
 			}
+			foundProjectIssueEntity.setProjectIssueEntity(projectIssueEntity);
 			projectIssueRepository.save(foundProjectIssueEntity);
 		} else {
 			projectIssueRepository.save(projectIssueEntity);
@@ -188,6 +189,7 @@ public class BusinessLogicProcessor {
 			if (count < 5) {
 				log.info("found " + foundProjectEntity.getId());
 			}
+			foundProjectEntity.setProjectEntity(projectEntity);
 			projectRepository.save(foundProjectEntity);
 		} else {
 			projectRepository.save(projectEntity);
